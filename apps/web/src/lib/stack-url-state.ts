@@ -46,6 +46,9 @@ const serverStackParsers = {
   packageManager: parseAsStringEnumServer<StackState["packageManager"]>(
     getValidIds("packageManager"),
   ).withDefault(DEFAULT_STACK.packageManager),
+  hooks: parseAsStringEnumServer<StackState["hooks"]>(getValidIds("hooks")).withDefault(
+    DEFAULT_STACK.hooks,
+  ),
   addons: parseAsArrayOfServer(parseAsStringServer).withDefault(DEFAULT_STACK.addons),
   examples: parseAsArrayOfServer(parseAsStringServer).withDefault(DEFAULT_STACK.examples),
   git: parseAsStringEnumServer<StackState["git"]>(["true", "false"]).withDefault(DEFAULT_STACK.git),

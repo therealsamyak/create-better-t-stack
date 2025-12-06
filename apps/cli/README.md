@@ -58,7 +58,8 @@ Options:
   --auth                          Include authentication
   --no-auth                       Exclude authentication
   --frontend <types...>           Frontend types (tanstack-router, react-router, tanstack-start, next, nuxt, svelte, solid, native-bare, native-uniwind, native-unistyles, none)
-  --addons <types...>             Additional addons (pwa, tauri, starlight, biome, husky, turborepo, fumadocs, ultracite, oxlint, none)
+  --addons <types...>             Additional addons (pwa, tauri, starlight, biome, turborepo, fumadocs, ultracite, oxlint, none)
+  --hooks <type>                   Git hooks manager (lefthook, husky, none)
   --examples <types...>           Examples to include (todo, ai, none)
   --git                           Initialize git repository
   --no-git                        Skip git initialization

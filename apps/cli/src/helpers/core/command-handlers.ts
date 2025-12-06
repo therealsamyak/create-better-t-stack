@@ -102,6 +102,7 @@ export async function createProjectHandler(input: CreateInput & { projectName?: 
         api: "none",
         webDeploy: "none",
         serverDeploy: "none",
+        hooks: "none",
       } satisfies ProjectConfig,
       reproducibleCommand: "",
       timeScaffolded,

@@ -12,6 +12,7 @@ import { setupDatabase } from "../core/db-setup";
 import { setupRuntime } from "../core/runtime-setup";
 import { setupServerDeploy } from "../deployment/server-deploy-setup";
 import { setupWebDeploy } from "../deployment/web-deploy-setup";
+import { setupHooks } from "../hooks/hooks-setup";
 import { setupAuth } from "./auth-setup";
 import { createReadme } from "./create-readme";
 import { setupEnvironmentVariables } from "./env-setup";
@@ -30,6 +31,7 @@ import {
   setupDockerComposeTemplates,
   setupExamplesTemplate,
   setupFrontendTemplates,
+  setupHooksTemplate,
   setupPaymentsTemplate,
 } from "./template-manager";
 
@@ -59,6 +61,7 @@ export async function createProject(options: ProjectConfig, cliInput?: { manualD
       await setupExamplesTemplate(projectDir, options);
     }
     await setupAddonsTemplate(projectDir, options);
+    await setupHooksTemplate(projectDir, options);
 
     await setupDeploymentTemplates(projectDir, options);
 
@@ -80,6 +83,10 @@ export async function createProject(options: ProjectConfig, cliInput?: { manualD
 
     if (options.addons.length > 0 && options.addons[0] !== "none") {
       await setupAddons(options);
+    }
+
+    if (options.hooks && options.hooks !== "none") {
+      await setupHooks(options);
     }
 
     if (options.auth && options.auth !== "none") {

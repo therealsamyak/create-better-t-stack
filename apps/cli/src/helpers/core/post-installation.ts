@@ -19,6 +19,7 @@ export async function displayPostInstallInstructions(
     dbSetup,
     webDeploy,
     serverDeploy,
+    hooks,
   } = config;
 
   const isConvex = backend === "convex";
@@ -26,7 +27,7 @@ export async function displayPostInstallInstructions(
   const runCmd =
     packageManager === "npm" ? "npm run" : packageManager === "pnpm" ? "pnpm run" : "bun run";
   const cdCmd = `cd ${relativePath}`;
-  const hasHuskyOrBiome = addons?.includes("husky") || addons?.includes("biome");
+  const hasHooksOrBiome = (hooks && hooks !== "none") || addons?.includes("biome");
 
   const databaseInstructions =
     !isConvex && database !== "none"
@@ -42,7 +43,7 @@ export async function displayPostInstallInstructions(
       : "";
 
   const tauriInstructions = addons?.includes("tauri") ? getTauriInstructions(runCmd) : "";
-  const lintingInstructions = hasHuskyOrBiome ? getLintingInstructions(runCmd) : "";
+  const lintingInstructions = hasHooksOrBiome ? getLintingInstructions(runCmd) : "";
   const nativeInstructions =
     (frontend?.includes("native-bare") ||
       frontend?.includes("native-uniwind") ||

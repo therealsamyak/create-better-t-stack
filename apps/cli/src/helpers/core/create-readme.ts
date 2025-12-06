@@ -8,6 +8,7 @@ import type {
   Database,
   DatabaseSetup,
   Frontend,
+  Hooks,
   ORM,
   ProjectConfig,
   Runtime,
@@ -38,6 +39,7 @@ function generateReadmeContent(options: ProjectConfig) {
     api = "trpc",
     webDeploy,
     serverDeploy,
+    hooks,
   } = options;
 
   const isConvex = backend === "convex";
@@ -65,7 +67,7 @@ This project was created with [Better-T-Stack](https://github.com/AmanVarshney01
 
 ## Features
 
-${generateFeaturesList(database, auth, addons, orm, runtime, frontend, backend, api)}
+${generateFeaturesList(database, auth, addons, orm, runtime, frontend, backend, api, hooks)}
 
 ## Getting Started
 
@@ -348,6 +350,7 @@ function generateFeaturesList(
   frontend: Frontend[],
   backend: string,
   api: API,
+  hooks?: Hooks,
 ) {
   const isConvex = backend === "convex";
   const isBackendNone = backend === "none";
@@ -459,13 +462,17 @@ function generateFeaturesList(
       addonsList.push("- **Tauri** - Build native desktop applications");
     } else if (addon === "biome") {
       addonsList.push("- **Biome** - Linting and formatting");
-    } else if (addon === "husky") {
-      addonsList.push("- **Husky** - Git hooks for code quality");
     } else if (addon === "starlight") {
       addonsList.push("- **Starlight** - Documentation site with Astro");
     } else if (addon === "turborepo") {
       addonsList.push("- **Turborepo** - Optimized monorepo build system");
     }
+  }
+
+  // Add hooks information
+  if (hooks && hooks !== "none") {
+    const hooksName = hooks === "husky" ? "Husky" : "Lefthook";
+    addonsList.push(`- **${hooksName}** - Git hooks for code quality`);
   }
 
   return addonsList.join("\n");

@@ -50,6 +50,7 @@ export async function addAddonsToProject(
       api: detectedConfig.api || "none",
       webDeploy: detectedConfig.webDeploy || "none",
       serverDeploy: detectedConfig.serverDeploy || "none",
+      hooks: input.hooks || detectedConfig.hooks || "none",
     };
 
     for (const addon of input.addons) {

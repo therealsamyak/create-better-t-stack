@@ -18,6 +18,7 @@ const CORE_STACK_FLAGS = new Set([
   "api",
   "webDeploy",
   "serverDeploy",
+  "hooks",
 ]);
 
 function validateYesFlagCombination(options: CLIInput, providedFlags: Set<string>) {

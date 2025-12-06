@@ -58,23 +58,12 @@ ${pc.cyan("Docs:")} ${pc.underline("https://turborepo.com/docs")}
   }
   const hasUltracite = addons.includes("ultracite");
   const hasBiome = addons.includes("biome");
-  const hasHusky = addons.includes("husky");
-  const hasOxlint = addons.includes("oxlint");
 
   if (hasUltracite) {
-    await setupUltracite(config, hasHusky);
+    await setupUltracite(config);
   } else {
     if (hasBiome) {
       await setupBiome(projectDir);
-    }
-    if (hasHusky) {
-      let linter: "biome" | "oxlint" | undefined;
-      if (hasOxlint) {
-        linter = "oxlint";
-      } else if (hasBiome) {
-        linter = "biome";
-      }
-      await setupHusky(projectDir, linter);
     }
   }
 
@@ -118,39 +107,6 @@ export async function setupBiome(projectDir: string) {
       ...packageJson.scripts,
       check: "biome check --write .",
     };
-
-    await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
-  }
-}
-
-export async function setupHusky(projectDir: string, linter?: "biome" | "oxlint") {
-  await addPackageDependency({
-    devDependencies: ["husky", "lint-staged"],
-    projectDir,
-  });
-
-  const packageJsonPath = path.join(projectDir, "package.json");
-  if (await fs.pathExists(packageJsonPath)) {
-    const packageJson = await fs.readJson(packageJsonPath);
-
-    packageJson.scripts = {
-      ...packageJson.scripts,
-      prepare: "husky",
-    };
-
-    if (linter === "oxlint") {
-      packageJson["lint-staged"] = {
-        "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint",
-      };
-    } else if (linter === "biome") {
-      packageJson["lint-staged"] = {
-        "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": ["biome check --write ."],
-      };
-    } else {
-      packageJson["lint-staged"] = {
-        "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "",
-      };
-    }
 
     await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
   }

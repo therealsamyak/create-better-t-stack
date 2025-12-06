@@ -37,6 +37,7 @@ describe("Backend and Runtime Combinations", () => {
           examples: ["none"],
           dbSetup: "none",
           install: false,
+          hooks: "none",
         };
 
         // Set appropriate defaults based on backend

@@ -469,6 +469,32 @@ export const TECH_OPTIONS: Record<
       default: true,
     },
   ],
+  hooks: [
+    {
+      id: "lefthook",
+      name: "Lefthook",
+      description: "Fast and powerful Git hooks manager",
+      icon: `${ICON_BASE_URL}/lefthook.svg`,
+      color: "from-orange-500 to-orange-700",
+      default: true,
+    },
+    {
+      id: "husky",
+      name: "Husky",
+      description: "Modern native Git hooks made easy",
+      icon: "",
+      color: "from-purple-500 to-purple-700",
+      default: false,
+    },
+    {
+      id: "none",
+      name: "None",
+      description: "No Git hooks manager",
+      icon: "",
+      color: "from-gray-500 to-gray-700",
+      default: false,
+    },
+  ],
   addons: [
     {
       id: "pwa",
@@ -503,14 +529,6 @@ export const TECH_OPTIONS: Record<
       default: false,
     },
     {
-      id: "husky",
-      name: "Husky",
-      description: "Modern native Git hooks made easy",
-      icon: "",
-      color: "from-purple-500 to-purple-700",
-      default: false,
-    },
-    {
       id: "ultracite",
       name: "Ultracite",
       description: "Biome preset with AI integration",
@@ -519,6 +537,7 @@ export const TECH_OPTIONS: Record<
       className: "invert-0 dark:invert",
       default: false,
     },
+
     {
       id: "fumadocs",
       name: "Fumadocs",
@@ -527,22 +546,7 @@ export const TECH_OPTIONS: Record<
       color: "from-indigo-500 to-indigo-700",
       default: false,
     },
-    {
-      id: "oxlint",
-      name: "Oxlint",
-      description: "Rust-powered linter",
-      icon: "",
-      color: "from-orange-500 to-orange-700",
-      default: false,
-    },
-    {
-      id: "ruler",
-      name: "Ruler",
-      description: "Centralize your AI rules",
-      icon: "",
-      color: "from-violet-500 to-violet-700",
-      default: false,
-    },
+
     {
       id: "turborepo",
       name: "Turborepo",
@@ -623,6 +627,7 @@ export const PRESET_TEMPLATES = [
       auth: "better-auth",
       payments: "none",
       packageManager: "bun",
+      hooks: "lefthook",
       addons: ["turborepo"],
       examples: ["todo"],
       git: "true",
@@ -649,6 +654,7 @@ export const PRESET_TEMPLATES = [
       auth: "better-auth",
       payments: "none",
       packageManager: "bun",
+      hooks: "lefthook",
       addons: ["turborepo"],
       examples: ["todo"],
       git: "true",
@@ -675,8 +681,9 @@ export const PRESET_TEMPLATES = [
       auth: "better-auth",
       payments: "none",
       packageManager: "bun",
-      addons: ["biome", "turborepo"],
-      examples: ["none"],
+      hooks: "lefthook",
+      addons: ["turborepo"],
+      examples: ["todo"],
       git: "true",
       install: "true",
       api: "trpc",
@@ -701,6 +708,7 @@ export const PRESET_TEMPLATES = [
       auth: "none",
       payments: "none",
       packageManager: "bun",
+      hooks: "lefthook",
       addons: ["none"],
       examples: ["none"],
       git: "true",
@@ -725,6 +733,7 @@ export type StackState = {
   auth: string;
   payments: string;
   packageManager: string;
+  hooks: string;
   addons: string[];
   examples: string[];
   git: string;
@@ -747,6 +756,7 @@ export const DEFAULT_STACK: StackState = {
   auth: "better-auth",
   payments: "none",
   packageManager: "bun",
+  hooks: "lefthook",
   addons: ["turborepo"],
   examples: ["none"],
   git: "true",

@@ -596,6 +596,16 @@ export async function setupPaymentsTemplate(projectDir: string, context: Project
   }
 }
 
+export async function setupHooksTemplate(projectDir: string, context: ProjectConfig) {
+  if (!context.hooks || context.hooks === "none") return;
+
+  const hooksSrcDir = path.join(PKG_ROOT, `templates/hooks/${context.hooks}`);
+
+  if (await fs.pathExists(hooksSrcDir)) {
+    await processAndCopyFiles("**/*", hooksSrcDir, projectDir, context);
+  }
+}
+
 export async function setupAddonsTemplate(projectDir: string, context: ProjectConfig) {
   if (!context.addons || context.addons.length === 0) return;
 

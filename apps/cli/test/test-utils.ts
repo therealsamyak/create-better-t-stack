@@ -4,7 +4,7 @@ import { createRouterClient } from "@orpc/server";
 import { ensureDir } from "fs-extra";
 import { expect } from "vitest";
 import { router } from "../src/index";
-import type { CreateInput, InitResult } from "../src/types";
+import type { CreateInput, Hooks, InitResult } from "../src/types";
 import {
   AddonsSchema,
   APISchema,
@@ -110,6 +110,7 @@ export async function runTRPCTest(config: TestConfig): Promise<TestResult> {
           dbSetup: "none" as DatabaseSetup,
           webDeploy: "none" as WebDeploy,
           serverDeploy: "none" as ServerDeploy,
+          hooks: "none" as Hooks,
         };
 
     // Build options object - let the CLI handle all validation

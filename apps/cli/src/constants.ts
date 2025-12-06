@@ -24,6 +24,7 @@ export const DEFAULT_CONFIG_BASE = {
   api: "trpc",
   webDeploy: "none",
   serverDeploy: "none",
+  hooks: "none",
 } as const;
 
 export function getDefaultConfig() {
@@ -85,6 +86,7 @@ export const dependencyVersionMap = {
 
   husky: "^9.1.7",
   "lint-staged": "^16.1.2",
+  lefthook: "^2.0.8",
 
   tsx: "^4.19.2",
   "@types/node": "^22.13.11",
@@ -175,7 +177,6 @@ export const ADDON_COMPATIBILITY = {
   pwa: ["tanstack-router", "react-router", "solid", "next"],
   tauri: ["tanstack-router", "react-router", "nuxt", "svelte", "solid", "next"],
   biome: [],
-  husky: [],
   turborepo: [],
   starlight: [],
   ultracite: [],
