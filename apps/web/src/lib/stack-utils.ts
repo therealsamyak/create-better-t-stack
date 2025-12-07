@@ -15,6 +15,7 @@ const CATEGORY_ORDER: Array<keyof typeof TECH_OPTIONS> = [
   "auth",
   "payments",
   "packageManager",
+  "hooks",
   "addons",
   "examples",
   "git",
