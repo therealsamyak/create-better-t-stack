@@ -160,6 +160,7 @@ interface CreateInput {
   addons?: Addons[];               // Array of addons
   examples?: Examples[];           // Array of examples
   git?: boolean;                   // Initialize git repo
+  gitHooks?: GitHooks;             // "lefthook" | "husky" | "none"
   packageManager?: PackageManager; // "npm" | "pnpm" | "bun"
   install?: boolean;               // Install dependencies
   dbSetup?: DatabaseSetup;         // Database hosting setup

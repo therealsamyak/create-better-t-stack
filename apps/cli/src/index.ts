@@ -26,6 +26,7 @@ import {
   type Frontend,
   FrontendSchema,
   GitHooksSchema,
+  type GitHooks,
   type InitResult,
   type ORM,
   ORMSchema,
@@ -252,4 +253,5 @@ export type {
   ProjectConfig,
   BetterTStackConfig,
   InitResult,
+  GitHooks,
 };
