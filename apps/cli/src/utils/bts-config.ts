@@ -24,6 +24,7 @@ export async function writeBtsConfig(projectConfig: ProjectConfig) {
     api: projectConfig.api,
     webDeploy: projectConfig.webDeploy,
     serverDeploy: projectConfig.serverDeploy,
+    gitHooks: projectConfig.gitHooks,
   };
 
   const baseContent = {
@@ -44,6 +45,7 @@ export async function writeBtsConfig(projectConfig: ProjectConfig) {
     api: btsConfig.api,
     webDeploy: btsConfig.webDeploy,
     serverDeploy: btsConfig.serverDeploy,
+    gitHooks: btsConfig.gitHooks,
   };
 
   let configContent = JSON.stringify(baseContent);
@@ -93,7 +95,7 @@ export async function readBtsConfig(projectDir: string) {
 
 export async function updateBtsConfig(
   projectDir: string,
-  updates: Partial<Pick<BetterTStackConfig, "addons" | "webDeploy" | "serverDeploy">>,
+  updates: Partial<Pick<BetterTStackConfig, "addons" | "webDeploy" | "serverDeploy" | "gitHooks">>,
 ) {
   try {
     const configPath = path.join(projectDir, BTS_CONFIG_FILE);

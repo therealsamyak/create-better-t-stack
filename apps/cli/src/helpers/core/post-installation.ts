@@ -19,7 +19,7 @@ export async function displayPostInstallInstructions(
     dbSetup,
     webDeploy,
     serverDeploy,
-    hooks,
+    gitHooks,
   } = config;
 
   const isConvex = backend === "convex";
@@ -27,7 +27,7 @@ export async function displayPostInstallInstructions(
   const runCmd =
     packageManager === "npm" ? "npm run" : packageManager === "pnpm" ? "pnpm run" : "bun run";
   const cdCmd = `cd ${relativePath}`;
-  const hasHooksOrBiome = (hooks && hooks !== "none") || addons?.includes("biome");
+  const hasHooksOrBiome = (gitHooks && gitHooks !== "none") || addons?.includes("biome");
 
   const databaseInstructions =
     !isConvex && database !== "none"
