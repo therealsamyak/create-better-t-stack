@@ -1,5 +1,12 @@
 pre-commit:
   commands:
-    example:
-      run: lint-staged
+    {{#if biome}}
+    biome:
+      run: biome check --write {staged_files}
       stage_fixed: true
+    {{/if}}
+    {{#if oxlint}}
+    oxlint:
+      run: oxlint --fix {staged_files}
+      stage_fixed: true
+    {{/if}}

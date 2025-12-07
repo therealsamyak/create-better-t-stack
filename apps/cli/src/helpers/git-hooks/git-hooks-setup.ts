@@ -15,18 +15,21 @@ export async function setupGitHooks(config: ProjectConfig) {
 
   if (gitHooks === "none") return;
 
-  // Determine which linter is selected from addons
-  let linter: "biome" | "oxlint" | undefined;
-  if (addons.includes("oxlint")) {
-    linter = "oxlint";
-  } else if (addons.includes("biome")) {
-    linter = "biome";
-  }
+  // Determine which linters are selected from addons
+  const hasBiome = addons.includes("biome");
+  const hasOxlint = addons.includes("oxlint");
 
   if (gitHooks === "husky") {
+    // For husky, we still use the old linter logic since it needs lint-staged
+    let linter: "biome" | "oxlint" | undefined;
+    if (hasOxlint) {
+      linter = "oxlint";
+    } else if (hasBiome) {
+      linter = "biome";
+    }
     await setupHusky(projectDir, linter);
   } else if (gitHooks === "lefthook") {
-    await setupLefthook(projectDir, linter);
+    await setupLefthook(projectDir, hasBiome, hasOxlint);
   }
 }
 
@@ -63,9 +66,9 @@ export async function setupHusky(projectDir: string, linter?: "biome" | "oxlint"
   }
 }
 
-export async function setupLefthook(projectDir: string, linter?: "biome" | "oxlint") {
+export async function setupLefthook(projectDir: string, biome?: boolean, oxlint?: boolean) {
   await addPackageDependency({
-    devDependencies: ["lefthook", "lint-staged"],
+    devDependencies: ["lefthook"],
     projectDir,
   });
 
@@ -78,35 +81,18 @@ export async function setupLefthook(projectDir: string, linter?: "biome" | "oxli
       prepare: "lefthook install",
     };
 
-    if (linter === "oxlint") {
-      packageJson["lint-staged"] = {
-        "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "oxlint",
-      };
-    } else if (linter === "biome") {
-      packageJson["lint-staged"] = {
-        "*.{js,ts,cjs,mjs,d.cts,d.mts,jsx,tsx,json,jsonc}": ["biome check --write ."],
-      };
-    } else {
-      packageJson["lint-staged"] = {
-        "**/*.{js,mjs,cjs,jsx,ts,mts,cts,tsx,vue,astro,svelte}": "",
-      };
-    }
-
     await fs.writeJson(packageJsonPath, packageJson, { spaces: 2 });
   }
 
-  // Only create lefthook.yml if there's a linter configured
-  // Otherwise, let lefthook use its default configuration
-  if (linter) {
-    // Read and compile Handlebars template
-    const templatePath = path.join(PKG_ROOT, "templates/git-hooks/lefthook/lefthook.yml.hbs");
-    const templateContent = await fs.readFile(templatePath, "utf-8");
-    const template = Handlebars.compile(templateContent);
+  // Always create lefthook.yml with the template
+  // Read and compile Handlebars template
+  const templatePath = path.join(PKG_ROOT, "templates/git-hooks/lefthook/lefthook.yml.hbs");
+  const templateContent = await fs.readFile(templatePath, "utf-8");
+  const template = Handlebars.compile(templateContent);
 
-    // Generate lefthook.yml content using template
-    const lefthookYmlContent = template({ linter });
+  // Generate lefthook.yml content using template
+  const lefthookYmlContent = template({ biome, oxlint });
 
-    const lefthookYmlPath = path.join(projectDir, "lefthook.yml");
-    await fs.writeFile(lefthookYmlPath, lefthookYmlContent);
-  }
+  const lefthookYmlPath = path.join(projectDir, "lefthook.yml");
+  await fs.writeFile(lefthookYmlPath, lefthookYmlContent);
 }
