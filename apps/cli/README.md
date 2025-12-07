@@ -40,8 +40,9 @@ Follow the prompts to configure your project or use the `--yes` flag for default
 | **ORM**                  | • Drizzle (TypeScript-first)<br>• Prisma (feature-rich)<br>• Mongoose (for MongoDB)<br>• None                                                                                                                                                              |
 | **Database Setup**       | • Turso (SQLite)<br>• Cloudflare D1 (SQLite)<br>• Neon (PostgreSQL)<br>• Supabase (PostgreSQL)<br>• Prisma Postgres<br>• MongoDB Atlas<br>• None (manual setup)                                                                    |
 | **Authentication**       | Better-Auth (email/password, with more options coming soon)                                                                                                                                                                                                |
+| **Git Hooks**            | • Lefthook<br>• Husky<br>• None                                                                                                                                                                                                                           |
 | **Styling**              | Tailwind CSS with shadcn/ui components                                                                                                                                                                                                                     |
-| **Addons**               | • PWA support<br>• Tauri (desktop applications)<br>• Starlight (documentation site)<br>• Biome (linting and formatting)<br>• Husky / Lefthook (Git hooks)<br>• Turborepo (optimized builds)                                                                           |
+| **Addons**               | • PWA support<br>• Tauri (desktop applications)<br>• Starlight (documentation site)<br>• Biome (linting and formatting)<br>• Turborepo (optimized builds)                                                                           |
 | **Examples**             | • Todo app<br>• AI Chat interface (using Vercel AI SDK)                                                                                                                                                                                                    |
 | **Developer Experience** | • Automatic Git initialization<br>• Package manager choice (npm, pnpm, bun)<br>• Automatic dependency installation                                                                                                                                         |
 
@@ -193,7 +194,7 @@ npx create-better-t-stack my-app --frontend none --backend hono --api trpc --dat
 - **ORM 'none'**: Can be used when you want to handle database operations manually or use a different ORM.
 - **Runtime 'none'**: Only available with Convex backend or when backend is 'none'.
 - **Cloudflare Workers runtime**: Only compatible with Hono backend, Drizzle ORM (or no ORM), and SQLite database (with D1 setup). Not compatible with MongoDB.
-- **Addons 'none'**: Skips all addons (PWA, Tauri, Starlight, Biome, Husky, Turborepo).
+- **Addons 'none'**: Skips all addons (PWA, Tauri, Starlight, Biome, Turborepo).
 - **Examples 'none'**: Skips all example implementations (todo, AI chat).
 - **SvelteKit, Nuxt, and SolidJS** frontends are only compatible with oRPC API layer
 - **PWA support** requires React with TanStack Router, React Router, or SolidJS
