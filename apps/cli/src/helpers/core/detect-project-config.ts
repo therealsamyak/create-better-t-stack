@@ -23,7 +23,7 @@ export async function detectProjectConfig(projectDir: string) {
         api: btsConfig.api,
         webDeploy: btsConfig.webDeploy,
         serverDeploy: btsConfig.serverDeploy,
-        hooks: btsConfig.hooks,
+        gitHooks: btsConfig.gitHooks,
       };
     }
 

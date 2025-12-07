@@ -131,7 +131,7 @@ function getFrameworksFromFrontend(frontend: string[]): string[] {
 }
 
 export async function setupUltracite(config: ProjectConfig) {
-  const { packageManager, projectDir, frontend, hooks: gitHooks } = config;
+  const { packageManager, projectDir, frontend, gitHooks } = config;
 
   try {
     log.info("Setting up Ultracite...");
