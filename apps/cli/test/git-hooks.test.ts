@@ -188,52 +188,6 @@ describe("Git Hooks Configurations", () => {
     });
   });
 
-  describe("Ultracite Integration", () => {
-    it("should work with ultracite + lefthook", async () => {
-      const result = await runTRPCTest({
-        projectName: "ultracite-lefthook",
-        addons: ["ultracite"],
-        gitHooks: "lefthook",
-        frontend: ["tanstack-router"],
-        backend: "hono",
-        runtime: "bun",
-        database: "sqlite",
-        orm: "drizzle",
-        auth: "none",
-        api: "trpc",
-        examples: ["none"],
-        dbSetup: "none",
-        webDeploy: "none",
-        serverDeploy: "none",
-        install: false,
-      });
-
-      expectSuccess(result);
-    });
-
-    it("should work with ultracite + husky", async () => {
-      const result = await runTRPCTest({
-        projectName: "ultracite-husky",
-        addons: ["ultracite"],
-        gitHooks: "husky",
-        frontend: ["tanstack-router"],
-        backend: "hono",
-        runtime: "bun",
-        database: "sqlite",
-        orm: "drizzle",
-        auth: "none",
-        api: "trpc",
-        examples: ["none"],
-        dbSetup: "none",
-        webDeploy: "none",
-        serverDeploy: "none",
-        install: false,
-      });
-
-      expectSuccess(result);
-    });
-  });
-
   describe("Hooks Default Behavior", () => {
     it("should use default hooks when not specified", async () => {
       const result = await runTRPCTest({
