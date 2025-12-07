@@ -599,6 +599,9 @@ export async function setupPaymentsTemplate(projectDir: string, context: Project
 export async function setupGitHooksTemplate(projectDir: string, context: ProjectConfig) {
   if (!context.gitHooks || context.gitHooks === "none") return;
 
+  // Skip template setup if ultracite is handling git hooks
+  if (context.addons.includes("ultracite")) return;
+
   const gitHooksSrcDir = path.join(PKG_ROOT, `templates/git-hooks/${context.gitHooks}`);
 
   if (await fs.pathExists(gitHooksSrcDir)) {

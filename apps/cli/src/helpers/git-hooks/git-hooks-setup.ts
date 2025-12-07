@@ -7,6 +7,11 @@ import { addPackageDependency } from "../../utils/add-package-deps";
 export async function setupGitHooks(config: ProjectConfig) {
   const { projectDir, gitHooks, addons } = config;
 
+  // Skip if ultracite is handling git hooks
+  if (addons.includes("ultracite") && gitHooks !== "none") {
+    return;
+  }
+
   if (gitHooks === "none") return;
 
   // Determine which linter is selected from addons
