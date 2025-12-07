@@ -6,7 +6,7 @@ import type {
   CLIInput,
   Database,
   DatabaseSetup,
-  Hooks,
+  GitHooks,
   ORM,
   PackageManager,
   Payments,
@@ -87,8 +87,8 @@ export function processFlags(options: CLIInput, projectName?: string) {
     config.serverDeploy = options.serverDeploy as ServerDeploy;
   }
 
-  if (options.hooks) {
-    config.hooks = options.hooks as Hooks;
+  if (options.gitHooks) {
+    config.gitHooks = options.gitHooks as GitHooks;
   }
 
   const derivedName = deriveProjectName(projectName, options.projectDirectory);

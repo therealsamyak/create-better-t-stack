@@ -8,7 +8,7 @@ import type {
   DatabaseSetup,
   Examples,
   Frontend,
-  Hooks,
+  GitHooks,
   ORM,
   PackageManager,
   Payments,
@@ -27,7 +27,7 @@ import { getDBSetupChoice } from "./database-setup";
 import { getExamplesChoice } from "./examples";
 import { getFrontendChoice } from "./frontend";
 import { getGitChoice } from "./git";
-import { getHooksChoice } from "./hooks";
+import { getGitHooksChoice } from "./git-hooks";
 import { getinstallChoice } from "./install";
 import { getORMChoice } from "./orm";
 import { getPackageManagerChoice } from "./package-manager";
@@ -53,7 +53,7 @@ type PromptGroupResults = {
   install: boolean;
   webDeploy: WebDeploy;
   serverDeploy: ServerDeploy;
-  hooks: Hooks;
+  gitHooks: GitHooks;
 };
 
 export async function gatherConfig(
@@ -110,7 +110,7 @@ export async function gatherConfig(
         ),
       git: () => getGitChoice(flags.git),
       packageManager: () => getPackageManagerChoice(flags.packageManager),
-      hooks: () => getHooksChoice(flags.hooks),
+      gitHooks: () => getGitHooksChoice(flags.gitHooks),
       install: () => getinstallChoice(flags.install),
     },
     {
@@ -138,6 +138,6 @@ export async function gatherConfig(
     api: result.api,
     webDeploy: result.webDeploy,
     serverDeploy: result.serverDeploy,
-    hooks: result.hooks,
+    gitHooks: result.gitHooks,
   };
 }

@@ -596,13 +596,13 @@ export async function setupPaymentsTemplate(projectDir: string, context: Project
   }
 }
 
-export async function setupHooksTemplate(projectDir: string, context: ProjectConfig) {
-  if (!context.hooks || context.hooks === "none") return;
+export async function setupGitHooksTemplate(projectDir: string, context: ProjectConfig) {
+  if (!context.gitHooks || context.gitHooks === "none") return;
 
-  const hooksSrcDir = path.join(PKG_ROOT, `templates/hooks/${context.hooks}`);
+  const gitHooksSrcDir = path.join(PKG_ROOT, `templates/git-hooks/${context.gitHooks}`);
 
-  if (await fs.pathExists(hooksSrcDir)) {
-    await processAndCopyFiles("**/*", hooksSrcDir, projectDir, context);
+  if (await fs.pathExists(gitHooksSrcDir)) {
+    await processAndCopyFiles("**/*", gitHooksSrcDir, projectDir, context);
   }
 }
 

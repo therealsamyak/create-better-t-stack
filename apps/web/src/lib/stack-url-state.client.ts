@@ -32,8 +32,8 @@ export const stackParsers = {
   packageManager: parseAsStringEnum<StackState["packageManager"]>(
     getValidIds("packageManager"),
   ).withDefault(DEFAULT_STACK.packageManager),
-  hooks: parseAsStringEnum<StackState["hooks"]>(getValidIds("hooks")).withDefault(
-    DEFAULT_STACK.hooks,
+  gitHooks: parseAsStringEnum<StackState["gitHooks"]>(getValidIds("gitHooks")).withDefault(
+    DEFAULT_STACK.gitHooks,
   ),
   addons: parseAsArrayOf(parseAsString).withDefault(DEFAULT_STACK.addons),
   examples: parseAsArrayOf(parseAsString).withDefault(DEFAULT_STACK.examples),

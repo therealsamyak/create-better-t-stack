@@ -1,10 +1,10 @@
 import { isCancel, select } from "@clack/prompts";
 import { DEFAULT_CONFIG } from "../constants";
-import type { Hooks } from "../types";
+import type { GitHooks } from "../types";
 import { exitCancelled } from "../utils/errors";
 
-export async function getHooksChoice(hooks: Hooks | undefined) {
-  if (hooks !== undefined) return hooks;
+export async function getGitHooksChoice(gitHooks: GitHooks | undefined) {
+  if (gitHooks !== undefined) return gitHooks;
 
   const response = await select({
     message: "Select Git hooks manager",
@@ -25,10 +25,10 @@ export async function getHooksChoice(hooks: Hooks | undefined) {
         hint: "No Git hooks manager",
       },
     ],
-    initialValue: DEFAULT_CONFIG.hooks,
+    initialValue: DEFAULT_CONFIG.gitHooks,
   });
 
   if (isCancel(response)) return exitCancelled("Operation cancelled");
 
-  return response as Hooks;
+  return response as GitHooks;
 }

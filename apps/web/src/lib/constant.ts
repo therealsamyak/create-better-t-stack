@@ -469,7 +469,7 @@ export const TECH_OPTIONS: Record<
       default: true,
     },
   ],
-  hooks: [
+  gitHooks: [
     {
       id: "lefthook",
       name: "Lefthook",
@@ -643,7 +643,7 @@ export const PRESET_TEMPLATES = [
       auth: "better-auth",
       payments: "none",
       packageManager: "bun",
-      hooks: "lefthook",
+      gitHooks: "lefthook",
       addons: ["turborepo"],
       examples: ["todo"],
       git: "true",
@@ -670,7 +670,7 @@ export const PRESET_TEMPLATES = [
       auth: "better-auth",
       payments: "none",
       packageManager: "bun",
-      hooks: "lefthook",
+      gitHooks: "lefthook",
       addons: ["turborepo"],
       examples: ["todo"],
       git: "true",
@@ -697,7 +697,7 @@ export const PRESET_TEMPLATES = [
       auth: "better-auth",
       payments: "none",
       packageManager: "bun",
-      hooks: "lefthook",
+      gitHooks: "lefthook",
       addons: ["turborepo"],
       examples: ["todo"],
       git: "true",
@@ -724,7 +724,7 @@ export const PRESET_TEMPLATES = [
       auth: "none",
       payments: "none",
       packageManager: "bun",
-      hooks: "lefthook",
+      gitHooks: "lefthook",
       addons: ["none"],
       examples: ["none"],
       git: "true",
@@ -749,7 +749,7 @@ export type StackState = {
   auth: string;
   payments: string;
   packageManager: string;
-  hooks: string;
+  gitHooks: string;
   addons: string[];
   examples: string[];
   git: string;
@@ -772,7 +772,7 @@ export const DEFAULT_STACK: StackState = {
   auth: "better-auth",
   payments: "none",
   packageManager: "bun",
-  hooks: "none",
+  gitHooks: "none",
   addons: ["turborepo"],
   examples: ["none"],
   git: "true",

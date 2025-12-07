@@ -41,7 +41,7 @@ Follow the prompts to configure your project or use the `--yes` flag for default
 | **Database Setup**       | • Turso (SQLite)<br>• Cloudflare D1 (SQLite)<br>• Neon (PostgreSQL)<br>• Supabase (PostgreSQL)<br>• Prisma Postgres<br>• MongoDB Atlas<br>• None (manual setup)                                                                    |
 | **Authentication**       | Better-Auth (email/password, with more options coming soon)                                                                                                                                                                                                |
 | **Styling**              | Tailwind CSS with shadcn/ui components                                                                                                                                                                                                                     |
-| **Addons**               | • PWA support<br>• Tauri (desktop applications)<br>• Starlight (documentation site)<br>• Biome (linting and formatting)<br>• Husky (Git hooks)<br>• Turborepo (optimized builds)                                                                           |
+| **Addons**               | • PWA support<br>• Tauri (desktop applications)<br>• Starlight (documentation site)<br>• Biome (linting and formatting)<br>• Husky / Lefthook (Git hooks)<br>• Turborepo (optimized builds)                                                                           |
 | **Examples**             | • Todo app<br>• AI Chat interface (using Vercel AI SDK)                                                                                                                                                                                                    |
 | **Developer Experience** | • Automatic Git initialization<br>• Package manager choice (npm, pnpm, bun)<br>• Automatic dependency installation                                                                                                                                         |
 
@@ -59,7 +59,7 @@ Options:
   --no-auth                       Exclude authentication
   --frontend <types...>           Frontend types (tanstack-router, react-router, tanstack-start, next, nuxt, svelte, solid, native-bare, native-uniwind, native-unistyles, none)
   --addons <types...>             Additional addons (pwa, tauri, starlight, biome, turborepo, fumadocs, ultracite, oxlint, none)
-  --hooks <type>                   Git hooks manager (lefthook, husky, none)
+  --git-hooks <type>               Git hooks manager (lefthook, husky, none)
   --examples <types...>           Examples to include (todo, ai, none)
   --git                           Initialize git repository
   --no-git                        Skip git initialization

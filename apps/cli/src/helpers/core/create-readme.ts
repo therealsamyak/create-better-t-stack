@@ -8,7 +8,7 @@ import type {
   Database,
   DatabaseSetup,
   Frontend,
-  Hooks,
+  GitHooks,
   ORM,
   ProjectConfig,
   Runtime,
@@ -39,7 +39,7 @@ function generateReadmeContent(options: ProjectConfig) {
     api = "trpc",
     webDeploy,
     serverDeploy,
-    hooks,
+    gitHooks,
   } = options;
 
   const isConvex = backend === "convex";
@@ -67,7 +67,7 @@ This project was created with [Better-T-Stack](https://github.com/AmanVarshney01
 
 ## Features
 
-${generateFeaturesList(database, auth, addons, orm, runtime, frontend, backend, api, hooks)}
+${generateFeaturesList(database, auth, addons, orm, runtime, frontend, backend, api, gitHooks)}
 
 ## Getting Started
 
@@ -350,7 +350,7 @@ function generateFeaturesList(
   frontend: Frontend[],
   backend: string,
   api: API,
-  hooks?: Hooks,
+  gitHooks?: GitHooks,
 ) {
   const isConvex = backend === "convex";
   const isBackendNone = backend === "none";
@@ -469,10 +469,10 @@ function generateFeaturesList(
     }
   }
 
-  // Add hooks information
-  if (hooks && hooks !== "none") {
-    const hooksName = hooks === "husky" ? "Husky" : "Lefthook";
-    addonsList.push(`- **${hooksName}** - Git hooks for code quality`);
+  // Add git hooks information
+  if (gitHooks && gitHooks !== "none") {
+    const gitHooksName = gitHooks === "husky" ? "Husky" : "Lefthook";
+    addonsList.push(`- **${gitHooksName}** - Git hooks for code quality`);
   }
 
   return addonsList.join("\n");

@@ -4,10 +4,10 @@ import Handlebars from "handlebars";
 import type { ProjectConfig } from "../../types";
 import { addPackageDependency } from "../../utils/add-package-deps";
 
-export async function setupHooks(config: ProjectConfig) {
-  const { projectDir, hooks, addons } = config;
+export async function setupGitHooks(config: ProjectConfig) {
+  const { projectDir, gitHooks, addons } = config;
 
-  if (hooks === "none") return;
+  if (gitHooks === "none") return;
 
   // Determine which linter is selected from addons
   let linter: "biome" | "oxlint" | undefined;
@@ -17,9 +17,9 @@ export async function setupHooks(config: ProjectConfig) {
     linter = "biome";
   }
 
-  if (hooks === "husky") {
+  if (gitHooks === "husky") {
     await setupHusky(projectDir, linter);
-  } else if (hooks === "lefthook") {
+  } else if (gitHooks === "lefthook") {
     await setupLefthook(projectDir, linter);
   }
 }
@@ -93,7 +93,10 @@ export async function setupLefthook(projectDir: string, linter?: "biome" | "oxli
   // Otherwise, let lefthook use its default configuration
   if (linter) {
     // Read and compile Handlebars template
-    const templatePath = path.join(__dirname, "../../../templates/hooks/lefthook/lefthook.yml.hbs");
+    const templatePath = path.join(
+      __dirname,
+      "../../../templates/git-hooks/lefthook/lefthook.yml.hbs",
+    );
     const templateContent = await fs.readFile(templatePath, "utf-8");
     const template = Handlebars.compile(templateContent);
 

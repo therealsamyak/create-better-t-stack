@@ -24,7 +24,7 @@ export const DEFAULT_CONFIG_BASE = {
   api: "trpc",
   webDeploy: "none",
   serverDeploy: "none",
-  hooks: "none",
+  gitHooks: "none",
 } as const;
 
 export function getDefaultConfig() {

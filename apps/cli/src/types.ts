@@ -85,8 +85,8 @@ export type Auth = z.infer<typeof AuthSchema>;
 export const PaymentsSchema = z.enum(["polar", "none"]).describe("Payments provider");
 export type Payments = z.infer<typeof PaymentsSchema>;
 
-export const HooksSchema = z.enum(["husky", "lefthook", "none"]).describe("Git hooks manager");
-export type Hooks = z.infer<typeof HooksSchema>;
+export const GitHooksSchema = z.enum(["husky", "lefthook", "none"]).describe("Git hooks manager");
+export type GitHooks = z.infer<typeof GitHooksSchema>;
 
 export const ProjectNameSchema = z
   .string()
@@ -147,7 +147,7 @@ export type CreateInput = {
   renderTitle?: boolean;
   disableAnalytics?: boolean;
   manualDb?: boolean;
-  hooks?: Hooks;
+  gitHooks?: GitHooks;
 };
 
 export type AddInput = {
@@ -157,7 +157,7 @@ export type AddInput = {
   projectDir?: string;
   install?: boolean;
   packageManager?: PackageManager;
-  hooks?: Hooks;
+  gitHooks?: GitHooks;
 };
 
 export type CLIInput = CreateInput & {
@@ -184,7 +184,7 @@ export interface ProjectConfig {
   api: API;
   webDeploy: WebDeploy;
   serverDeploy: ServerDeploy;
-  hooks: Hooks;
+  gitHooks: GitHooks;
 }
 
 export interface BetterTStackConfig {
@@ -204,7 +204,7 @@ export interface BetterTStackConfig {
   api: API;
   webDeploy: WebDeploy;
   serverDeploy: ServerDeploy;
-  hooks: Hooks;
+  gitHooks: GitHooks;
 }
 
 export interface InitResult {

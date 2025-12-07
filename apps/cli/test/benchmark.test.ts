@@ -428,7 +428,7 @@ describe("CLI Performance Benchmarks", () => {
         auth: "none",
         api: "trpc",
         addons: ["turborepo", "biome"],
-        hooks: "husky",
+        gitHooks: "husky",
         examples: ["none"],
         dbSetup: "none",
         webDeploy: "none",

@@ -1,16 +1,16 @@
 import { describe, it } from "vitest";
-import type { Hooks } from "../src/types";
-import { expectSuccess, runTRPCTest } from "./test-utils";
+import type { GitHooks } from "../src/types";
+import { runTRPCTest, expectSuccess } from "./test-utils";
 
-describe("Hooks Configurations", () => {
-  describe("Individual Hook Options", () => {
-    const hookOptions = ["husky", "lefthook", "none"] as Hooks[];
+describe("Git Hooks Configurations", () => {
+  describe("Individual Git Hook Options", () => {
+    const gitHookOptions = ["husky", "lefthook", "none"] as GitHooks[];
 
-    for (const hook of hookOptions) {
-      it(`should work with ${hook} hooks`, async () => {
+    for (const gitHook of gitHookOptions) {
+      it(`should work with ${gitHook} git hooks`, async () => {
         const result = await runTRPCTest({
-          projectName: `${hook}-hooks`,
-          hooks: hook,
+          projectName: `${gitHook}-git-hooks`,
+          gitHooks: gitHook,
           frontend: ["tanstack-router"],
           backend: "hono",
           runtime: "bun",
@@ -35,7 +35,7 @@ describe("Hooks Configurations", () => {
       const result = await runTRPCTest({
         projectName: "lefthook-biome",
         addons: ["biome"],
-        hooks: "lefthook",
+        gitHooks: "lefthook",
         frontend: ["tanstack-router"],
         backend: "hono",
         runtime: "bun",
@@ -57,7 +57,7 @@ describe("Hooks Configurations", () => {
       const result = await runTRPCTest({
         projectName: "lefthook-oxlint",
         addons: ["oxlint"],
-        hooks: "lefthook",
+        gitHooks: "lefthook",
         frontend: ["tanstack-router"],
         backend: "hono",
         runtime: "bun",
@@ -78,7 +78,7 @@ describe("Hooks Configurations", () => {
     it("should work with lefthook alone (no linter)", async () => {
       const result = await runTRPCTest({
         projectName: "lefthook-standalone",
-        hooks: "lefthook",
+        gitHooks: "lefthook",
         frontend: ["tanstack-router"],
         backend: "hono",
         runtime: "bun",
@@ -102,7 +102,7 @@ describe("Hooks Configurations", () => {
       const result = await runTRPCTest({
         projectName: "husky-biome",
         addons: ["biome"],
-        hooks: "husky",
+        gitHooks: "husky",
         frontend: ["tanstack-router"],
         backend: "hono",
         runtime: "bun",
@@ -124,7 +124,7 @@ describe("Hooks Configurations", () => {
       const result = await runTRPCTest({
         projectName: "husky-oxlint",
         addons: ["oxlint"],
-        hooks: "husky",
+        gitHooks: "husky",
         frontend: ["tanstack-router"],
         backend: "hono",
         runtime: "bun",
@@ -145,7 +145,7 @@ describe("Hooks Configurations", () => {
     it("should work with husky alone (no linter)", async () => {
       const result = await runTRPCTest({
         projectName: "husky-standalone",
-        hooks: "husky",
+        gitHooks: "husky",
         frontend: ["tanstack-router"],
         backend: "hono",
         runtime: "bun",
@@ -169,7 +169,7 @@ describe("Hooks Configurations", () => {
       const result = await runTRPCTest({
         projectName: "multiple-addons-with-hooks",
         addons: ["biome", "turborepo", "pwa"],
-        hooks: "lefthook",
+        gitHooks: "lefthook",
         frontend: ["tanstack-router"],
         backend: "hono",
         runtime: "bun",

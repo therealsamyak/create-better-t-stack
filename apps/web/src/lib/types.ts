@@ -12,7 +12,7 @@ export type TechCategory =
   | "auth"
   | "payments"
   | "packageManager"
-  | "hooks"
+  | "gitHooks"
   | "addons"
   | "examples"
   | "git"

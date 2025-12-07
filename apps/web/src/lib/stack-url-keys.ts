@@ -14,7 +14,7 @@ export const stackUrlKeys: UrlKeys<Record<keyof StackState, unknown>> = {
   auth: "au",
   payments: "pay",
   packageManager: "pm",
-  hooks: "hooks",
+  gitHooks: "gitHooks",
   addons: "add",
   examples: "ex",
   git: "git",

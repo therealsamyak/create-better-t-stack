@@ -43,8 +43,8 @@ export function displayConfig(config: Partial<ProjectConfig>) {
     configDisplay.push(`${pc.blue("Payments:")} ${String(config.payments)}`);
   }
 
-  if (config.hooks !== undefined) {
-    configDisplay.push(`${pc.blue("Git Hooks:")} ${String(config.hooks)}`);
+  if (config.gitHooks !== undefined) {
+    configDisplay.push(`${pc.blue("Git Hooks:")} ${String(config.gitHooks)}`);
   }
 
   if (config.addons !== undefined) {
