@@ -215,14 +215,9 @@ export async function setupUltracite(config: ProjectConfig) {
       shell: true,
     });
 
-    if (gitHooks === "husky") {
+    if (gitHooks !== "none") {
       await addPackageDependency({
-        devDependencies: ["husky", "lint-staged"],
-        projectDir,
-      });
-    } else if (gitHooks === "lefthook") {
-      await addPackageDependency({
-        devDependencies: ["lefthook"],
+        devDependencies: [gitHooks, "lint-staged"],
         projectDir,
       });
     }
