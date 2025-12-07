@@ -100,7 +100,7 @@ export async function setupLefthook(projectDir: string, linter?: "biome" | "oxli
     // Read and compile Handlebars template
     const templatePath = path.join(
       __dirname,
-      "../../../templates/git-hooks/lefthook/lefthook.yml.hbs",
+      "../../../../templates/git-hooks/lefthook/lefthook.yml.hbs",
     );
     const templateContent = await fs.readFile(templatePath, "utf-8");
     const template = Handlebars.compile(templateContent);
