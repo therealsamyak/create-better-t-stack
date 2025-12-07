@@ -3,6 +3,7 @@ import fs from "fs-extra";
 import Handlebars from "handlebars";
 import type { ProjectConfig } from "../../types";
 import { addPackageDependency } from "../../utils/add-package-deps";
+import { PKG_ROOT } from "../../constants";
 
 export async function setupGitHooks(config: ProjectConfig) {
   const { projectDir, gitHooks, addons } = config;
@@ -98,10 +99,7 @@ export async function setupLefthook(projectDir: string, linter?: "biome" | "oxli
   // Otherwise, let lefthook use its default configuration
   if (linter) {
     // Read and compile Handlebars template
-    const templatePath = path.join(
-      __dirname,
-      "../../../../templates/git-hooks/lefthook/lefthook.yml.hbs",
-    );
+    const templatePath = path.join(PKG_ROOT, "templates/git-hooks/lefthook/lefthook.yml.hbs");
     const templateContent = await fs.readFile(templatePath, "utf-8");
     const template = Handlebars.compile(templateContent);
 
