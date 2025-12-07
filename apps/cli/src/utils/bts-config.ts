@@ -95,7 +95,7 @@ export async function readBtsConfig(projectDir: string) {
 
 export async function updateBtsConfig(
   projectDir: string,
-  updates: Partial<Pick<BetterTStackConfig, "addons" | "webDeploy" | "serverDeploy" | "gitHooks">>,
+  updates: Partial<Pick<BetterTStackConfig, "addons" | "webDeploy" | "serverDeploy">>,
 ) {
   try {
     const configPath = path.join(projectDir, BTS_CONFIG_FILE);
